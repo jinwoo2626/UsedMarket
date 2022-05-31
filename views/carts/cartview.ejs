@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+  <div class="container">
+    <% if (carts.length > 0) {%>
+      <!-- <h3 class="mb-3">Your Products <%= user %>:</h3> -->
+      <% carts.forEach(cart => {%>
+        <div class="card card-body mb-2">
+          <h4><%= cart.name %></h4>
+          <p><%= cart.price %></p>
+          <p><%= cart.quantity %></p>
+          <form method="post" action="/carts/<%= cart.productid %>?_method=PUT">
+            <input type="hidden" name="quantity" value="<%= cart.quantity %>">
+            <input type="hidden" name="cartid" value="<%= cart._id %>">
+            <button type="submit" class="btn btn-primary">구매하기</button>
+          </form>
+          <form method="post" action="/carts/<%= cart._id %>?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn btn-danger btn-block" value="물품 삭제하기">
+          </form>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>물품이없습니다.</p>
+    <% } %>
+  </div>
+<% include ../partials/scripts %>
+</body>
+</html>

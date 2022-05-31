@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+  <div class="container">
+    <% if (products.length > 0) {%>
+      <% products.forEach(product => {%>
+        <div class="card card-body mb-2">
+          <h4><%= product.name %></h4>
+          <p><%= product.category %></p>
+          <p><%= product.price %></p>
+          <p><%= product.explanation %></p>
+          <p><%= product.quantity %></p>
+          <p><%= product.user %></p>
+          <% if (user != product.user) {%>
+            <form action="/carts/cart/<%= product._id %>" method="get">
+              <input type="submit" class="btn btn-danger btn-block" value="장바구니에 담기">
+            </form>
+          <% }%>
+          <a href="/products" class="btn btn-dark btn-block  mb-2">뒤로가기</a>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>No video ideas listed!</p>
+    <% } %>
+  </div>
+<% include ../partials/scripts %>
+</body>
+</html>

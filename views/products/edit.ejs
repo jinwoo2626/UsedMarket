@@ -1,0 +1,40 @@
+<% include ../partials/header %>
+  <div class="container">
+      <!-- <% if (errors != undefined) {%>
+        <% errors.forEach(err => { %>
+          <div class="alert alert-danger"><%= err.text %></div>
+        <% }) %>
+      <% } %> -->
+      <div class="card card-body">
+        <h3>Edit Product</h3>
+        <form action="/products/<%= product._id %>?_method=PUT" method="post">
+          <div class="form-group">
+            <input type="hidden" name="_method" value="PUT">
+            <label for="title">Name</label>
+            <input type="text" class="form-control" name="name" value="<%= product.name %>">
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="_method" value="PUT">
+            <label for="title">Category</label>
+            <input type="text" class="form-control" name="category" value="<%= product.category %>">
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="_method" value="PUT">
+            <label for="title">Price</label>
+            <input type="text" class="form-control" name="price" value="<%= product.price %>">
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="_method" value="PUT">
+            <label for="title">Explanation</label>
+            <input type="text" class="form-control" name="explanation" value="<%= product.explanation %>">
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="_method" value="PUT">
+            <label for="title">Quantity</label>
+            <input type="text" class="form-control" name="quantity" value="<%= product.quantity %>">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</submit>
+        </form>
+      </div>
+  </div>
+<% include ../partials/scripts %>
