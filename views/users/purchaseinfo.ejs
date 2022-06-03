@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+  <div class="container">
+    <% if (purchases.length > 0) {%>
+      <h3 class="mb-3"><%= user %> 님의 거래내역</h3>
+      <% purchases.forEach(purchase => {%>
+        <div class="card card-body mb-2">
+          <p><%= purchase.name %><p>
+          <p><%= purchase.price %><p>
+          <p><%= purchase.quantity %></p>
+          <p><%= purchase.date %></p>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>No video ideas listed!</p>
+    <% } %>
+  </div>
+  <a href="/" class="btn btn-dark btn-block  mb-2">메인으로</a>
+<% include ../partials/scripts %>
+</body>
+</html>

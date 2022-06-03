@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 const router = express.Router();
 const passport = require('passport');
 const User = require('../models/User');
+const {ensureAuthenticated} = require('../libs/auth');
+const Purchaseinfo = require('../models/Purchaseinfo');
 
   router.get('/login', (req, res) => {
     res.render('users/login', {error: ''});
@@ -75,4 +77,35 @@ const User = require('../models/User');
     })(req, res, next);
   });
 
+  router.get('/info/:id', ensureAuthenticated, (req, res) => {
+    User.find({_id: req.params.id}).then(users => {
+      res.render('users/info', {users, user: req.user.name});
+    }).catch(err => console.log(err));
+  }); 
+  router.get('/info', (req, res) => {
+    res.redirect('/');
+  });
+  router.get('/updateinfo/:id', (req, res) => {
+    User.find({_id: req.params.id}).then(users => {
+      res.render('users/updateinfo', {users, user: req.user.name});
+    }).catch(err => console.log(err));
+  });
+  router.put('/:id', (req, res) => {
+    User.findByIdAndUpdate(req.params.id, req.body).then(user => {
+      console.log(`${user.name} updated!`);
+      res.redirect('/users/info');
+    }).catch(err => console.log(err));
+  });
+  router.delete('/:id', (req, res) => {
+    User.findByIdAndRemove(req.params.id).then(() => {
+      console.log(`회원탈퇴`);
+      req.logout();
+      res.redirect('/');
+    }).catch(err => console.log(err));
+  });
+  router.get('/purchaseinfo/:id', (req, res) => {
+    Purchaseinfo.find({user: req.params.id}).then(purchases => {
+      res.render('users/purchaseinfo', {purchases, user: req.user.name});
+    }).catch(err => console.log(err));
+  });
 module.exports = router;

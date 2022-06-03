@@ -10,6 +10,7 @@
           <form method="post" action="/carts/<%= cart.productid %>?_method=PUT">
             <input type="hidden" name="quantity" value="<%= cart.quantity %>">
             <input type="hidden" name="cartid" value="<%= cart._id %>">
+            <input type="hidden" name="userid" value="<%= user %>">
             <button type="submit" class="btn btn-primary">구매하기</button>
           </form>
           <form method="post" action="/carts/<%= cart._id %>?_method=DELETE">

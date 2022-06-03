@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Cart = require('../models/Cart');
 const Product = require('../models/Product');
+const Purchaseinfo = require('../models/Purchaseinfo');
 const {ensureAuthenticated} = require('../libs/auth');
 
 router.get('/cart/:id', ensureAuthenticated, (req, res) => {
@@ -35,26 +36,35 @@ router.get('/cart/:id', ensureAuthenticated, (req, res) => {
   });
   router.get('/cartview', ensureAuthenticated, (req, res) => {
     Cart.find({user: req.user.id}).then(carts => {
-      res.render('carts/cartview', {carts, user: req.user.name});
+      res.render('carts/cartview', {carts, user: req.user.id});
     }).catch(err => console.log(err));
   }); 
-  var products;
+  var products2;
   router.put('/:id', (req, res) => {
     Product.findById({_id: req.params.id}).then(products => {
-        products = products.quantity - req.body.quantity;         
-    // Product.update({_id: {$in : req.params.id}}, {$set:{quantity: products}});
+      if(products.quantity >= req.body.quantity){
+        products2 = products.quantity - req.body.quantity;   
+
     Product.findOne({_id: req.params.id}).exec(function(err, doc){
         if(doc){
-            doc.quantity = products;
+            doc.quantity = products2;
             doc.save(function(err, product){
                 console.log("구매완료");
             })
         }
     })
+    Purchaseinfo.create({name: products.name, price: products.price, quantity: req.body.quantity, 
+      user: req.body.userid}).then(() => {
+      console.log('거래내역에 추가되었습니다.');
+         }).catch(err => console.log(err));  
     Cart.findByIdAndRemove(req.body.cartid).then(() => {
         console.log(`Product deleted!`);
         res.redirect('/carts/cartview');
-    }).catch(err => console.log(err));
+    }).catch(err => console.log(err));      
+      }else{
+        console.log(`구매하려는 수량보다 물품의 수량이 적습니다!`);
+        res.redirect('/carts/cartview');
+      }
 })
   });
   router.delete('/:id', (req, res) => {

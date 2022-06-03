@@ -21,20 +21,20 @@
     <ul class="navbar-nav mr-auto">
       <% if (user) {%>
         <li class="nav-item active">
-          <a class="nav-link text-white" href="/">Home</a>
+          <a class="nav-link text-white" href="/">메인페이지</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="/about">About</a>
+          <a class="nav-link text-white" href="/users/info/<%= user._id %>">회원정보</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="/users/logout">Logout</a>
+          <a class="nav-link text-white" href="/users/logout">로그아웃</a>
         </li>
       <% } else { %>
         <li class="nav-item">
-          <a href="/users/login" class="nav-link text-white">Login</a>
+          <a href="/users/login" class="nav-link text-white">로그인</a>
         </li>
         <li class="nav-item">
-          <a href="/users/register" class="nav-link text-white">Register</a>
+          <a href="/users/register" class="nav-link text-white">회원가입</a>
         </li>
       <% } %>
     </ul>

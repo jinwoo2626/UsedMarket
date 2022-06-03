@@ -40,13 +40,11 @@ app.use((req, res, next) => {
 
 app.set('view engine', 'ejs');
 
-const ideasRoute = require('./routes/ideas');
 const usersRoute = require('./routes/users');
 const productsRoute = require('./routes/product');
 const cartsRoute = require('./routes/cart');
 
 // routes
-// app.use('/ideas', ideasRoute);
 app.use('/users', usersRoute);
 app.use('/products', productsRoute);
 app.use('/carts', cartsRoute);
