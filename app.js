@@ -4,6 +4,7 @@ const express = require('express'),
       session = require('express-session'),
       mongoose = require('mongoose'),
       MongoStore = require('connect-mongo')(session),
+      path = require('path'),
       passport = require('passport');
 
 // init app
@@ -16,6 +17,7 @@ const {MONGO_URL} = require('./libs/db-connection');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
+app.use(express.static("public"));
 
 app.use(session({
   secret: 'abc123',

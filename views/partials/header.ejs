@@ -4,49 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>VJot Project - Node.Js, Express & MongoDB</title>
-  <style>
-    .btn {  cursor: pointer; }
-  </style>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-</head>
+  <title>회원가입</title>
+  </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary mb-5">
-  <a class="navbar-brand text-white" href="">Product</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if (user) {%>
-        <li class="nav-item active">
-          <a class="nav-link text-white" href="/">메인페이지</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="/users/info/<%= user._id %>">회원정보</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="/users/logout">로그아웃</a>
-        </li>
-      <% } else { %>
-        <li class="nav-item">
-          <a href="/users/login" class="nav-link text-white">로그인</a>
-        </li>
-        <li class="nav-item">
-          <a href="/users/register" class="nav-link text-white">회원가입</a>
-        </li>
-      <% } %>
-    </ul>
-    <ul class="navbar-nav ml-auto mr-5">
-      <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle text-white" data-toggle="dropdown" id="navbarDropdownMenuLink">장터</a>
-        <div class="dropdown-menu">
-          <a href="/products" class="dropdown-item">물품 보러가기</a>
-          <a href="/products/add" class="dropdown-item">물품추가</a>
-          <a href="/carts/cartview" class="dropdown-item">장바구니 보러가기</a>
+  <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+    <div class="container-fluid"><a class="navbar-brand logo" href="/">중고장터</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <% if (user) {%>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link" href="/">메인페이지</a></li>
+                <li class="nav-item"><a class="nav-link" href="/users/info/<%= user._id %>">회원정보</a></li>
+                <li class="nav-item"><a class="nav-link" href="/users/logout">로그아웃</a></li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="/products">장터</a></li>
+              <li class="nav-item"><a class="nav-link" href="/carts/cartview">장바구니</a></li>
+              </ul>
+            <% } else { %>
+              <ul class="navbar-nav me-auto">
+              <li class="nav-item"><a class="nav-link" href="/users/login">로그인</a></li>
+              <li class="nav-item"><a class="nav-link" href="/users/register">회원가입</a></li>
+              </ul>
+              <% } %>
         </div>
-      </li>
-    </ul>
-  </div>
+    </div>
 </nav>

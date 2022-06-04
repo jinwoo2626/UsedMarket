@@ -1,24 +1,40 @@
-<% include ../partials/header %>
-  <div class="container">
-    <% if (users.length > 0) {%>
-      <% users.forEach(user => {%>
-        <div class="card card-body mb-2">
-          <h3 class="mb-3"><%= user.name %> 님의 회원정보</h3>
-          <p><%= user.idemail %><p>
-          <p><%= user.name %><p>
-          <p><%= user.phone %></p>
-          <a href="/users/purchaseinfo/<%= user._id %>" class="btn btn-dark btn-block  mb-2">구매기록확인</a>
-          <a href="/users/updateinfo/<%= user._id %>" class="btn btn-dark btn-block  mb-2">회원정보수정</a>
-          <form method="post" action="/users/<%= user._id %>?_method=DELETE">
+<!DOCTYPE html>
+<html>
+    <% include ../partials/header %>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Contact - Brand</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
+    <link rel="stylesheet" href="/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+       <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="/assets/js/script.min.js"></script>
+</head>
+<body>
+  <main class="page contact-page">
+    <section class="portfolio-block contact">
+      <div class="container">
+        <% if (users.length > 0) {%>
+          <% users.forEach(user => {%>
+            <center><h3 class="mb-3"><%= user.name %> 님의 회원정보</h3></center>
+            <form method="post" action="/users/<%= user._id %>?_method=DELETE">
+            <div class="mb-3"><label class="form-label" for="idemail">아이디</label><input class="form-control item" type="text" name="idemail" value="<%= user.idemail %>" readonly></div>
+                <div class="mb-3"><label class="form-label" for="name">이름</label><input class="form-control item" type="text" name="name" value="<%= user.name %>" readonly></div>
+            <div class="mb-3"><label class="form-label" for="phone">전화번호</label><input class="form-control item" type="text" name="phone" value="<%= user.phone %>" readonly></div>
+            <a href="/users/purchaseinfo/<%= user._id %>" class="btn btn-info btn-block  mb-2">구매기록확인</a>
+          <a href="/users/updateinfo/<%= user._id %>" class="btn btn-success btn-block  mb-2">회원정보수정</a>         
             <input type="hidden" name="_method" value="DELETE">
-            <input type="submit" class="btn btn-danger btn-block" value="회원탈퇴">
+            <input type="submit" class="btn btn-danger btn-block float-end" value="회원탈퇴">
           </form>
-        </div>
-      <% }); %>
-    <% } else { %>
-      <p>No video ideas listed!</p>
-    <% } %>
-  </div>
-<% include ../partials/scripts %>
+        <% }); %>
+        <% } else { %>
+          <p>회원정보가 없습니다.</p>
+        <% } %>
+    </div>
+  </section>
+  </main>
 </body>
 </html>
