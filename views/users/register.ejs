@@ -1,39 +1,44 @@
 <!DOCTYPE html>
-<html>
-    <% include ../partials/header %>
-<head>
+ <html>
+    <% include ../partials/header %>  <!-- header 불러오기 -->
+ <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Contact - Brand</title>
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap">
-    <link rel="stylesheet" href="/assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
-       <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
-    <script src="/assets/js/script.min.js"></script>
-</head>
-
-<body>
-    
-    <main class="page contact-page">
-        <section class="portfolio-block contact">
-            <div class="container">
-                <div class="heading">
-                    <h2>회원가입</h2>
-                </div>
-                <form action="/users/register" method="post">
-                    <div class="mb-3"><label class="form-label" for="idemail">아이디</label><input class="form-control item" type="text" name="idemail" value="<%= idemail %>" required></div>
-                    <div class="mb-3"><label class="form-label" for="password">비밀번호</label><input class="form-control item" type="password" name="password" value="<%= password %>" required></div>
-                    <div class="mb-3"><label class="form-label" for="rpassword">비밀번호확인</label><input class="form-control item" type="password" name="rpassword" value="<%= rpassword %>" required></div>
-                    <div class="mb-3"><label class="form-label" for="name">이름</label><input class="form-control item" type="text" name="name" value="<%= name %>"required></div>
-                    <div class="mb-3"><label class="form-label" for="phone">전화번호</label><input class="form-control item" type="text" name="phone" value="<%= phone %>"required></div>
-                    <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">회원가입</button></div>
-                </form>
-            </div>
-        </section>
-    </main>
-   
-</body>
-
-</html>
+    <title>회원가입</title>
+    <% include ../partials/scripts %>  <!-- 부트스트랩 코드 불러오기 -->
+ </head>
+ <body>
+  <main class="page contact-page">
+    <section class="portfolio-block contact">
+      <div class="container">
+       <div class="heading">
+         <h2>회원가입</h2>
+       </div>
+           <form action="/users/register" method="post">
+              <div class="mb-3">
+                  <label class="form-label" for="idemail">아이디</label>
+                  <input class="form-control item" type="text" name="idemail" required>
+              </div>
+              <div class="mb-3">
+                  <label class="form-label" for="password">비밀번호</label>
+                  <input class="form-control item" type="password" name="password" required>
+              </div>
+              <div class="mb-3">
+                  <label class="form-label" for="rpassword">비밀번호확인</label>
+                  <input class="form-control item" type="password" name="rpassword" required>
+              </div>
+              <div class="mb-3">
+                  <label class="form-label" for="name">이름</label>
+                  <input class="form-control item" type="text" name="name" required>
+              </div>
+              <div class="mb-3">
+                  <label class="form-label" for="phone">전화번호</label>
+                  <input class="form-control item" type="text" name="phone" required>
+              </div>
+              <div class="mb-3"><button class="btn btn-primary btn-lg d-block w-100" type="submit">회원가입</button></div> <!-- 회원가입 -->
+           </form>
+       </div>
+    </section>
+   </main>
+ </body>
+ </html>

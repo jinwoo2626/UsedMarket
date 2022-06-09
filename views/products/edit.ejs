@@ -1,40 +1,49 @@
-<% include ../partials/header %>
-  <div class="container">
-      <!-- <% if (errors != undefined) {%>
-        <% errors.forEach(err => { %>
-          <div class="alert alert-danger"><%= err.text %></div>
-        <% }) %>
-      <% } %> -->
-      <div class="card card-body">
-        <h3>Edit Product</h3>
-        <form action="/products/<%= product._id %>?_method=PUT" method="post">
+<!DOCTYPE html>
+ <html>
+    <% include ../partials/header %>  <!-- header 불러오기 -->
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>제품수정</title>
+    <% include ../partials/scripts %>  <!-- 부트스트랩 코드 불러오기 -->
+ </head>
+ <body>
+  <main class="page contact-page">
+    <section class="portfolio-block contact">
+     <div class="container">
+       <center><h3>제품정보수정하기</h3></center>
+       <br>
+        <form action="/products/<%= product._id %>?_method=PUT" method="post">  <!-- form 태그로 경로와 전송방식 결정 -->
           <div class="form-group">
             <input type="hidden" name="_method" value="PUT">
-            <label for="title">Name</label>
-            <input type="text" class="form-control" name="name" value="<%= product.name %>">
-          </div>
+            <label for="title">제품명</label>
+            <input type="text" class="form-control" name="name" value="<%= product.name %>"> <!-- 넘어온 값 출력 -->
+          </div><br>
           <div class="form-group">
             <input type="hidden" name="_method" value="PUT">
-            <label for="title">Category</label>
+            <label for="title">분류</label>
             <input type="text" class="form-control" name="category" value="<%= product.category %>">
-          </div>
+          </div><br>
           <div class="form-group">
             <input type="hidden" name="_method" value="PUT">
-            <label for="title">Price</label>
+            <label for="title">가격</label>
             <input type="text" class="form-control" name="price" value="<%= product.price %>">
-          </div>
+          </div><br>
           <div class="form-group">
             <input type="hidden" name="_method" value="PUT">
-            <label for="title">Explanation</label>
+            <label for="title">설명</label>
             <input type="text" class="form-control" name="explanation" value="<%= product.explanation %>">
-          </div>
+          </div><br>
           <div class="form-group">
             <input type="hidden" name="_method" value="PUT">
-            <label for="title">Quantity</label>
+            <label for="title">수량</label>
             <input type="text" class="form-control" name="quantity" value="<%= product.quantity %>">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</submit>
+          </div><br>
+            <center><button type="submit" class="btn btn-primary" style="width: 540px;">제품수정</submit></center> <!-- 제품정보 수정 -->
         </form>
-      </div>
-  </div>
-<% include ../partials/scripts %>
+     </div>
+    </section>
+   </main>
+ </body>
+ </html>
+

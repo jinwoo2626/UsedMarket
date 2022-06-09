@@ -1,28 +1,38 @@
-<% include ../partials/header %>
-  <div class="container">
-    <% if (carts.length > 0) {%>
-      <!-- <h3 class="mb-3">Your Products <%= user %>:</h3> -->
-      <% carts.forEach(cart => {%>
+<!DOCTYPE html>
+ <html>
+    <% include ../partials/header %>   <!-- header 불러오기 -->
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>장바구니</title>
+    <% include ../partials/scripts %>   <!-- 부트스트랩 코드 불러오기 -->
+ </head>
+ <body>
+  <main class="page contact-page">
+    <br><br><br><br>
+    <div class="container">
+      <% if (carts.length > 0) {%>  <!-- carts의 길이가 0 이상일때 / carts가 넘어왔을때 -->
+      <% carts.forEach(cart => {%>  <!-- forEach문으로 반복 -->
         <div class="card card-body mb-2">
-          <h4><%= cart.name %></h4>
-          <p><%= cart.price %></p>
-          <p><%= cart.quantity %></p>
-          <form method="post" action="/carts/<%= cart.productid %>?_method=PUT">
-            <input type="hidden" name="quantity" value="<%= cart.quantity %>">
-            <input type="hidden" name="cartid" value="<%= cart._id %>">
-            <input type="hidden" name="userid" value="<%= user %>">
-            <button type="submit" class="btn btn-primary">구매하기</button>
-          </form>
-          <form method="post" action="/carts/<%= cart._id %>?_method=DELETE">
-            <input type="hidden" name="_method" value="DELETE">
-            <input type="submit" class="btn btn-danger btn-block" value="물품 삭제하기">
-          </form>
+          <h4><%= cart.name %></h4>   <!-- 넘어온 값 출력 -->
+          <p><%= cart.price %> 원</p>
+          <p><%= cart.quantity %> 개</p>
+        <form method="post" action="/carts/<%= cart.productid %>?_method=PUT"> <!-- form 태그로 경로와 전송방식 결정 -->
+          <input type="hidden" name="quantity" value="<%= cart.quantity %>"> <!-- hidden 타입으로 전송할 값 작성 -->
+          <input type="hidden" name="cartid" value="<%= cart._id %>">
+          <input type="hidden" name="userid" value="<%= user %>">
+          <center><button type="submit" class="btn btn-info btn-block" style="width: 800px;">구매하기</button></center>  <!-- 장바구니에 담긴 제품 구매 -->
+        </form>                                                 
+        <form method="post" action="/carts/<%= cart._id %>?_method=DELETE">  <!-- form 태그로 경로와 전송방식 결정 -->
+          <input type="hidden" name="_method" value="DELETE">                <!-- hidden 타입으로 전송할 값 작성 -->
+          <center><button type="submit" class="btn btn-secondary btn-block " style="width: 800px;">물품삭제하기</button></center> <!-- 장바구니에 담긴 제품 삭제 -->
+        </form>
         </div>
-      <% }); %>
-    <% } else { %>
-      <p>물품이없습니다.</p>
+      <% });  %>
+      <% } else { %>
+        <center><p>카트에 등록된 제품이 없습니다.</p></center>
     <% } %>
-  </div>
-<% include ../partials/scripts %>
-</body>
-</html>
+    </div>
+  </main>
+ </body>
+ </html>

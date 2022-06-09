@@ -1,26 +1,35 @@
-<% include ../partials/header %>
-  <div class="container">
-    <% if (products.length > 0) {%>
-      <% products.forEach(product => {%>
-        <div class="card card-body mb-2">
-          <form action="/carts/cart/<%= product._id %>" method="post">
-          <h4><%= product.name %></h4>
-          <p><%= product.price %></p>
+<!DOCTYPE html>
+ <html>
+    <% include ../partials/header %> <!-- header 불러오기 -->
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>장바구니담기</title>
+    <% include ../partials/scripts %> <!-- 부트스트랩 코드 불러오기 -->
+ </head>
+ <body>
+  <main class="page contact-page">
+    <section class="portfolio-block contact">
+     <% if (products.length > 0) {%>  <!-- products의 길이가 0 이상일때 / products가 넘어왔을때 -->
+      <% products.forEach(product => {%>  <!-- forEach문으로 반복 -->
+        <form action="/carts/cart/<%= product._id %>" method="post"> <!-- form 태그로 경로와 전송방식 결정 -->
+          <h4><%= product.name %></h4>  <!-- 넘어온 값 출력 -->
+          <p><%= product.price %> 원</p>
           <div class="form-group">
-            <label for="title">수량</label>
-            <input type="text" class="form-control" name="quantity" required autofocus>
+           <label for="title">수량</label>
+           <input type="text" class="form-control" name="quantity" required autofocus  placeholder="숫자만 적어주세요">
           </div>
-          <% if (user != product.user) {%>           
-              <input type="submit" class="btn btn-danger btn-block" value="장바구니에 담기">
-            </form>
-          <% }%>
-          <a href="/products" class="btn btn-dark btn-block  mb-2">뒤로가기</a>
-        </div>
-      <% }); %>
-    <% } else { %>
-      <p>No video ideas listed!</p>
+      <% if (user != product.user) {%>     <!-- 로그인 한 회원과 제품을 등록한 회원이 다른경우 -->      
+           <br>   <!-- 해당 제품을 등록하지 않은 사람만 장바구니에 담을 수 있게 함 -->
+           <input type="submit" class="btn btn-success btn-block" value="장바구니에 담기"> <!-- 장바구니에 제품을 담음 -->
+      <% }%>
+           <a href="/products" class="btn btn-dark btn-block  mb-2 float-end">뒤로가기</a> <!-- 뒤로가기 -->
+        </form>
+      <% });  %>
+      <% } else { %>
+        <p>제품이 없습니다.</p>
     <% } %>
-  </div>
-<% include ../partials/scripts %>
-</body>
-</html>
+    </section>
+  </main>
+ </body>
+ </html>

@@ -9,16 +9,20 @@ const express = require('express'),
 
 // init app
 const app = express();
-// define port
+
+// define port / 3000
 const port = process.env.PORT || 3000;
+
 // db
 const {MONGO_URL} = require('./libs/db-connection');
+
 // confs
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use(express.static("public"));
 
+//session
 app.use(session({
   secret: 'abc123',
   resave: true,
@@ -29,6 +33,7 @@ app.use(session({
     autoReconnect: true
   })
 }));
+
 // passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
@@ -40,8 +45,10 @@ app.use((req, res, next) => {
   next();
 })
 
+//ejs
 app.set('view engine', 'ejs');
 
+//routes path
 const usersRoute = require('./routes/users');
 const productsRoute = require('./routes/product');
 const cartsRoute = require('./routes/cart');

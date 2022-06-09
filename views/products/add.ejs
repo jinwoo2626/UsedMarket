@@ -1,35 +1,50 @@
-<% include ../partials/header %>
-  <div class="container">
-      <% if (errors != undefined) {%>
-        <% errors.forEach(err => { %>
-          <div class="alert alert-danger"><%= err.text %></div>
-        <% }) %>
-      <% } %>
-      <div class="card card-body">
-        <h3>Add Products</h3>
-        <form action="/products" method="post">
+<!DOCTYPE html>
+ <html>
+    <% include ../partials/header %>  <!-- header 불러오기 -->
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>제품추가</title>
+    <% include ../partials/scripts %>  <!-- 부트스트랩 코드 불러오기 -->
+ </head>
+ <body>
+  <main class="page contact-page">
+    <section class="portfolio-block contact">
+     <div class="container">
+      <% if (errors != undefined) {%> <!-- 에러가 없을 때 -->
+      <% errors.forEach(err => { %>   <!-- forEach문으로 반복 -->
+          <div class="alert alert-danger"><%= err.text %></div> <!-- 에러 출력 -->
+      <% }) %>
+      <% } %>    
+        <h3 align="center">제품 등록하기</h3>
+        <br>
+        <form action="/products" method="post"> <!-- form 태그로 경로와 전송방식 결정 -->
           <div class="form-group">
-            <label for="title">Name</label>
+            <label for="title">제품명</label>
             <input type="text" class="form-control" name="name">
-          </div>
+          </div><br>
           <div class="form-group">
-            <label for="title">Category</label>
+            <label for="title">분류</label>
             <input type="text" class="form-control" name="category">
-          </div>
+          </div><br>
           <div class="form-group">
-            <label for="title">Price</label>
-            <input type="text" class="form-control" name="price">
-          </div>
+            <label for="title">가격</label>
+            <input type="text" class="form-control" name="price" placeholder="숫자만 적어주세요">
+          </div><br>
           <div class="form-group">
-            <label for="title">Explanation</label>
+            <label for="title">설명</label>
             <input type="text" class="form-control" name="explanation">
-          </div>
+          </div><br>
           <div class="form-group">
-            <label for="title">Quantity</label>
-            <input type="text" class="form-control" name="quantity">
+            <label for="title">수량</label>
+            <input type="text" class="form-control" name="quantity" placeholder="숫자만 적어주세요">
           </div>
-          <button type="submit" class="btn btn-primary">Submit</submit>
+          <br>
+          <center><button type="submit" class="btn btn-primary" style="width: 540px;">제품등록</submit></center> <!-- 제품을 등록 -->
         </form>
-      </div>
   </div>
-<% include ../partials/scripts %>
+</section>
+</main>
+</body>
+</html>
+

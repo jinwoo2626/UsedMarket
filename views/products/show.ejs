@@ -1,26 +1,36 @@
-<% include ../partials/header %>
-  <div class="container">
-    <% if (products.length > 0) {%>
-      <% products.forEach(product => {%>
-        <div class="card card-body mb-2">
-          <h4><%= product.name %></h4>
-          <p><%= product.category %></p>
-          <p><%= product.price %></p>
-          <p><%= product.explanation %></p>
-          <p><%= product.quantity %></p>
-          <p><%= product.user %></p>
-          <% if (user != product.user) {%>
-            <form action="/carts/cart/<%= product._id %>" method="get">
-              <input type="submit" class="btn btn-danger btn-block" value="장바구니에 담기">
-            </form>
-          <% }%>
-          <a href="/products" class="btn btn-dark btn-block  mb-2">뒤로가기</a>
-        </div>
+<!DOCTYPE html>
+ <html>
+    <% include ../partials/header %>  <!-- header 불러오기 -->
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>제품 자세히보기</title>
+    <% include ../partials/scripts %>  <!-- 부트스트랩 코드 불러오기 -->
+ </head>
+ <body>
+  <main class="page contact-page">
+    <section class="portfolio-block contact">
+     <div class="container">
+      <% if (products.length > 0) {%>  <!-- products의 길이가 0 이상일때 / products가 넘어왔을때 -->
+      <% products.forEach(product => {%>  <!-- forEach문으로 반복 -->
+        <form>
+          <h4>제품명 : <%= product.name %></h4> <!-- 넘어온 값 출력 -->
+          <p>제품분류 : <%= product.category %></p>
+          <p>제품가격 : <%= product.price %> 원</p>
+          <p>제품설명 : <%= product.explanation %></p>
+          <p>제품수량 : <%= product.quantity %> 개</p>
+          <p>판 매 자 : <%= product.user %> 님</p>
+      <% if (user != product.user) {%>  <!-- 로그인 한 회원과 제품을 등록한 회원이 다른경우 --> 
+          <a href="/carts/cart/<%= product._id %>" class="btn btn-info btn-block  mb-2" style="width: 540px;">장바구니에 담기</a> <!-- 해당 제품을 등록하지 않은 회원만 제품을 장바구니에 담을 수 있음 --> 
+      <% }%>
+          <a href="/products" class="btn btn-secondary btn-block  mb-2" style="width: 540px;">뒤로가기</a> <!-- 뒤로가기 -->
+        </form>
       <% }); %>
-    <% } else { %>
-      <p>No video ideas listed!</p>
-    <% } %>
-  </div>
-<% include ../partials/scripts %>
-</body>
-</html>
+      <% } else { %>
+        <p>제품이 없습니다.</p>
+      <% } %>
+     </div>
+    </section>
+  </main>
+ </body>
+ </html>
