@@ -103,10 +103,29 @@
       console.log(`${user.name} 님 회원정보 수정완료`);
       res.redirect('/users/info');
     }).catch(err => console.log(err));
+
+    //회원이름 변경 시 자신이 등록한 제품의 판매자명도 수정
+    Product.findOne({user: req.params.id}).exec(function(err, doc){  // Product에서 uesr가 req.params.id인 값을 찾음
+      if(doc){    //에러가 아닐 때
+          doc.username = req.body.name; //수량변경한 값을 저장
+          doc.save(function(err, product){
+              console.log("제품판매자명 변경완료");
+          })
+      }
+    })
   });
 
-  //회원정보 삭제
+  //회원정보 삭제 / (회원정보 및 회원이 보유한 제품 모두 삭제)
   router.delete('/:id', (req, res) => {
+    Product.findOne({user: req.params.id}).exec(function(err, doc){  // Product에서 user가 req.params.id인 값을 찾음
+      if(doc){    //에러가 아닐 때
+          doc.user = req.params.id; //해당값 삭제
+          doc.remove(function(err, product){
+              console.log("회원이 보유한 제품 삭제완료");
+          })
+      }
+    })
+
     User.findByIdAndRemove(req.params.id).then(() => {  //User에서 req.params.id로 값을찾고 삭제함
       console.log(`회원탈퇴`);
       req.logout();

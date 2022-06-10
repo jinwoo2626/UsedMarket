@@ -20,6 +20,9 @@ const productSchema = new mongoose.Schema({
     quantity: {
         type: Number
     },
+    username: {
+        type: String
+    },
     user: {
         type: String
     },

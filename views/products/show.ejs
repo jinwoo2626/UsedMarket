@@ -19,8 +19,8 @@
           <p>제품가격 : <%= product.price %> 원</p>
           <p>제품설명 : <%= product.explanation %></p>
           <p>제품수량 : <%= product.quantity %> 개</p>
-          <p>판 매 자 : <%= product.user %> 님</p>
-      <% if (user != product.user) {%>  <!-- 로그인 한 회원과 제품을 등록한 회원이 다른경우 --> 
+          <p>판 매 자 : <%= product.username %> 님</p>
+      <% if (user._id != product.user) {%>  <!-- 로그인 한 회원과 제품을 등록한 회원이 다른경우 --> 
           <a href="/carts/cart/<%= product._id %>" class="btn btn-info btn-block  mb-2" style="width: 540px;">장바구니에 담기</a> <!-- 해당 제품을 등록하지 않은 회원만 제품을 장바구니에 담을 수 있음 --> 
       <% }%>
           <a href="/products" class="btn btn-secondary btn-block  mb-2" style="width: 540px;">뒤로가기</a> <!-- 뒤로가기 -->

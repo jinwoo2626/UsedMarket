@@ -8,7 +8,7 @@
   //장바구니담기 화면이동
   router.get('/cart/:id', ensureAuthenticated, (req, res) => {
     Product.find({_id: req.params.id}).then(products => { //Product 에서 _id가 req.params.id인값을 찾음
-      res.render('carts/cart', {products, user: req.user.name}); //products와 req.user.name값을 carts/cart로 넘겨줌
+      res.render('carts/cart', {products, username: req.user.name}); //products와 req.user.name값을 carts/cart로 넘겨줌
     }).catch(err => console.log(err));
   }); 
 

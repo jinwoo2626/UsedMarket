@@ -18,7 +18,7 @@
           <p>제품가격 : <%= product.price %> 원</p>
           <p>제품수량 : <%= product.quantity %> 개</p>
           <a href="/products/show/<%= product._id %>" class="btn btn-info btn-block  mb-2" style="width: 540px;">자세히보기</a> <!-- 등록된 제품 상세보기 -->
-      <% if (user == product.user) {%> <!-- 로그인 한 회원과 제품을 등록한 회원이 같은경우 -->  
+      <% if (user._id == product.user) {%> <!-- 로그인 한 회원과 제품을 등록한 회원이 같은경우 -->  
           <a href="/products/edit/<%= product._id %>" class="btn btn-secondary btn-block  mb-2" style="width: 540px;">제품정보수정하기</a> <!-- 해당 제품을 등록한 회원만 제품정보를 수정할 수 있게 함 -->  
           <input type="hidden" name="_method" value="DELETE">
           <input type="submit" class="btn btn-danger btn-block" value="제품삭제하기" style="width: 540px;"> <!-- 해당 제품을 등록한 회원만 제품을 삭제할 수 있게 함 -->  

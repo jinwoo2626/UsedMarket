@@ -19,7 +19,7 @@
            <label for="title">수량</label>
            <input type="text" class="form-control" name="quantity" required autofocus  placeholder="숫자만 적어주세요">
           </div>
-      <% if (user != product.user) {%>     <!-- 로그인 한 회원과 제품을 등록한 회원이 다른경우 -->      
+      <% if (user._id != product.user) {%>     <!-- 로그인 한 회원과 제품을 등록한 회원이 다른경우 -->      
            <br>   <!-- 해당 제품을 등록하지 않은 사람만 장바구니에 담을 수 있게 함 -->
            <input type="submit" class="btn btn-success btn-block" value="장바구니에 담기"> <!-- 장바구니에 제품을 담음 -->
       <% }%>
