@@ -53,7 +53,8 @@
             idemail: req.body.idemail,
             password: req.body.password,
             name: req.body.name,
-            phone: req.body.phone
+            phone: req.body.phone,
+            money: 200000
           });
           bcrypt.genSalt(10, (err, salt) => { //비밀번호 암호화
             bcrypt.hash(newUser.password, salt, (err, hash) => {

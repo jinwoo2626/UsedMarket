@@ -16,6 +16,12 @@ const purchaseinfoSchema = new mongoose.Schema({
     user: {
         type: String
     },
+    money: {
+        type: Number
+    },
+    state:{
+        type: String
+    },
     date: {type: Date, default: Date.now}
 });
 
