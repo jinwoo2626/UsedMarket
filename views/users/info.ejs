@@ -32,7 +32,7 @@
               <label class="form-label" for="money">보유금액</label>
               <input class="form-control item" type="text" name="money" value="<%= user.money %>원" readonly>
             </div>   
-            <a href="/users/purchaseinfo/<%= user._id %>" class="btn btn-info btn-block  mb-2">구매기록확인</a> <!-- 해당 회원이 구매한 제품 기록 확인 -->
+            <a href="/users/purchaseinfo/<%= user._id %>" class="btn btn-info btn-block  mb-2">거래기록확인</a> <!-- 해당 회원이 구매한 제품 기록 확인 -->
             <a href="/users/updateinfo/<%= user._id %>" class="btn btn-success btn-block  mb-2">회원정보수정</a> <!-- 회원정보 수정 -->        
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" class="btn btn-danger btn-block float-end" value="회원탈퇴"> <!-- 회원탈퇴 -->
