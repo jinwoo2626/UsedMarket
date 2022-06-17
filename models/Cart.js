@@ -3,20 +3,20 @@
 const mongoose = require("mongoose");
 
 const cartSchema = new mongoose.Schema({
-    name: {
+    name: {     //제품명
         type: String,
         required: true,
     },
-    price: {
+    price: {    //제품가격
         type: String
     },
-    quantity: {
+    quantity: { //제품수량
         type: Number
     },
-    user: {
+    user: {     //장바구니에 담은 유저정보
         type: String
     },
-    productid: {
+    productid: {//장바구니에 담긴 제품의 id정보
         type: String
     }
 });

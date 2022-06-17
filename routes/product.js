@@ -43,8 +43,8 @@
       //전달받은 req.body값들로 create문 실행 / 각 속성에 req.body.속성명으로 값 넣기
       Product.create({name: req.body.name, category: req.body.category, price: req.body.price,
          explanation: req.body.explanation, quantity: req.body.quantity, user: req.user.id, username: req.user.name}).then(() => {
-        console.log('Product created!');
-        res.redirect('/products');
+          console.log('Product created!');
+          res.redirect('/products');
       }).catch(err => console.log(err));
     }
   });

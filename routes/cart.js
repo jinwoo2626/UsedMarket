@@ -100,8 +100,8 @@
       
           //제품 구매시 장바구니에서 구매한 제품을 삭제처리
           Cart.findByIdAndRemove(req.body.cartid).then(() => { // Cart에서 req.body.cartid로 값을 찾아 삭제함
-              console.log(`거래가 완료되어 장바구니에서 제품을 삭제합니다.`);
-              res.redirect('/carts/cartview');
+            console.log(`거래가 완료되어 장바구니에서 제품을 삭제합니다.`);
+            res.redirect('/carts/cartview');
           }).catch(err => console.log(err));    
 
         }else{              //제품수량이 장바구니에 담을 수량보다 적을 때
