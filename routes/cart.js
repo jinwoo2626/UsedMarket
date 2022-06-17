@@ -52,7 +52,7 @@
 
     if(products){ //해당 제품이 존재할 때 / 110라인 else문 전까지 if문 범위
 
-    //제품수량이 장바구니에 담을 수량보다 많거나 같을때 / 106라인 else문전까지 if문범위
+    //제품수량이 장바구니에 담을 수량보다 많거나 같을때 / 보유금액이 충분할 때 / 106라인 else문전까지 if문범위
       if(products.quantity >= req.body.quantity && req.user.money >= (req.body.price * req.body.quantity)){  
 
           //제품 구매시 구매자의 보유금액 변경
