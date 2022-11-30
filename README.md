@@ -1,4 +1,4 @@
-# Node.js-gimalproject
+# Node.js Project / UsedMarket
 node.js 프로젝트/ 유저들간에 거래가 가능한 중고거래 사이트
 
 # 사용스택
